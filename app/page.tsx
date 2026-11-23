@@ -31,6 +31,12 @@ export default function Home() {
   const [blockedTimes, setBlockedTimes] = useState<string[]>([]);
   const [dayBlocked, setDayBlocked] = useState(false);
   const pix = process.env.NEXT_PUBLIC_STUDIO_PIX_KEY || "93991262037";
+const studioAddress = {
+  street: "Rua das Flores",
+  number: "123",
+  neighborhood: "Centro",
+  city: "Óbidos - PA"
+};
   const slots = ["08:00","09:00","10:00","11:00","13:00","14:00","15:00","16:00","17:00"];
 
   useEffect(() => {
@@ -174,6 +180,18 @@ setBusy(false);
     {!booking ? <section className="max-w-2xl mx-auto space-y-5">
       <div><h2 className="text-2xl font-semibold">Agende seu atendimento</h2><p className="muted text-sm mt-1">Escolha o procedimento, a data e o melhor horário.</p></div>
       <form onSubmit={submit} className="space-y-5">
+<div className="card space-y-2">
+  <h3 className="font-bold">📍 Local do atendimento</h3>
+  <p className="text-sm muted">
+    Seu atendimento será realizado no endereço do nosso estúdio:
+  </p>
+  <p className="font-semibold">
+    {studioAddress.street}, nº {studioAddress.number}
+  </p>
+  <p className="text-sm muted">
+    {studioAddress.neighborhood} — {studioAddress.city}
+  </p>
+</div>
         {["Cílios","Sobrancelhas"].map(category=><div className="card" key={category}>
           <h3 className="font-bold mb-3">{category}</h3><div className="grid sm:grid-cols-2 gap-2">
             {services.filter(s=>s.category===category).map(s=><button type="button" className="service" key={s.id||s.name} aria-pressed={selected.name===s.name} onClick={()=>setSelected(s)}>
@@ -286,7 +304,17 @@ setBusy(false);
         <div className="pt-2"><p className="text-xs muted mb-1">CHAVE PIX</p><div className="flex items-center gap-2"><code className="font-bold flex-1 break-all">{pix}</code><button type="button" className="secondary" onClick={copyPix}>Copiar</button></div></div>
         <p className="text-xs muted">Envie o comprovante ao estúdio. O agendamento só será confirmado após a conferência do pagamento.</p>
       </div>
-      <div className="flex justify-between"><span className="muted">Restante após o atendimento</span><b>{brl(booking.total-Math.round(booking.total*50)/100)}</b></div>
+      <div className="flex justify-between"><span className="muted">Restante após o atendimento</span>
+<div className="card space-y-2">
+  <h3 className="font-bold">📍 Endereço do atendimento</h3>
+  <p className="text-sm">
+    {studioAddress.street}, nº {studioAddress.number}
+  </p>
+  <p className="text-sm muted">
+    {studioAddress.neighborhood} — {studioAddress.city}
+  </p>
+</div>
+<b>{brl(booking.total-Math.round(booking.total*50)/100)}</b></div>
       {message && <p className="text-sm muted">{message}</p>}
       <button className="primary w-full" onClick={()=>{setBooking(null);setMessage("");setName("");setPhone("");setDate("");setTime("");setNotes("");}}>Voltar ao início</button>
     </section>}
