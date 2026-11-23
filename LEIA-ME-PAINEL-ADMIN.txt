@@ -1,0 +1,21 @@
+STUDIO DE CILIOS - ATUALIZACAO DO PAINEL ADMINISTRATIVO
+
+O QUE ESTA ATUALIZACAO FAZ
+- Melhora a tela /admin com resumo, pesquisa e filtros.
+- Permite confirmar o Pix, concluir e cancelar reservas.
+- Restringe o acesso no proprio codigo e nas politicas RLS ao UID administrativo confirmado.
+
+COMO APLICAR
+1. Faca uma copia de seguranca da pasta atual do projeto.
+2. Extraia os arquivos deste pacote dentro da pasta studio-de-cilios-conectado, mantendo as pastas.
+3. No Supabase, abra SQL Editor.
+4. Abra o arquivo supabase/admin-security.sql, copie todo o conteudo e execute.
+5. Na pasta do projeto, rode: npm run dev
+6. Acesse: http://localhost:3000/admin
+7. Entre com o e-mail e senha da conta administrativa criada em Authentication.
+
+IMPORTANTE
+- O UID permitido no painel e nas politicas RLS e o e-mail administrativo confirmado na conta Authentication: cilios@gmail.com.
+- Se o e-mail administrativo mudar, atualize ADMIN_EMAIL em app/admin/page.tsx e o e-mail permitido em supabase/admin-security.sql.
+- A confirmacao do Pix e manual: o painel nao consulta automaticamente o banco ou o sistema Pix.
+- A chave publishable do Supabase pode ficar no navegador; NUNCA coloque a chave secret/service_role em NEXT_PUBLIC_ ou no codigo do navegador.
