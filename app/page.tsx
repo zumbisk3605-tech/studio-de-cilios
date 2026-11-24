@@ -144,10 +144,11 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-  if (!supabase) return;
+  const client = supabase!;
+  if (!client) return;
 
   async function loadServices() {
-    const { data, error } = await supabase
+    const { data, error } = await client
       .from("services")
       .select("id, name, category, price, active")
       .eq("active", true)
@@ -158,9 +159,7 @@ useEffect(() => {
       return;
     }
 
-    if (data) {
-      setServices(data);
-    }
+    if (data) setServices(data);
   }
 
   loadServices();
