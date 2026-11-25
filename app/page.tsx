@@ -306,12 +306,49 @@ setBusy(false);
     catch { setMessage("Copie a chave Pix exibida na tela."); }
   }
   return <main className="container py-8 md:py-12">
-    <header className="rounded-3xl p-8 md:p-12 text-center mb-8" style={{background:"linear-gradient(130deg,#f3d8e2,#fff0e8)",color:"#704354"}}>
-      <p className="text-xs tracking-[.3em] uppercase mb-3">Beauty • Elegance • Care</p>
-      <h1 className="serif text-4xl md:text-5xl mb-3">Studio de Cílios</h1>
-      <p className="text-sm md:text-base">Realce sua beleza, valorize seu olhar ✨</p>
-      <p className="text-xs tracking-widest mt-5">CÍLIOS & SOBRANCELHAS</p>
-    </header>
+   <header
+  className="rounded-3xl p-5 md:p-7 mb-8"
+  style={{
+    width: "100%",
+    maxWidth: "672px",
+    margin: "0 auto 32px",
+    background: "linear-gradient(130deg,#f3d8e2,#fff0e8)",
+    color: "#704354"
+  }}
+>
+  <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-6">
+
+    <div className="text-center md:text-left">
+      <p className="text-xs tracking-[.3em] uppercase mb-3">
+        Beauty • Elegance • Care
+      </p>
+
+      <h1 className="serif text-4xl md:text-5xl mb-3">
+        Studio de Cílios
+      </h1>
+
+      <p className="text-sm md:text-base">
+        Realce sua beleza, valorize seu olhar ✨
+      </p>
+
+      <p className="text-xs tracking-widest mt-5">
+        CÍLIOS & SOBRANCELHAS
+      </p>
+    </div>
+
+    <div
+      className="shrink-0 rounded-full p-1 shadow-lg"
+      style={{ background: "#d99bb0" }}
+    >
+      <img
+        src="/profissional-studio.png"
+        alt="Profissional do Studio de Cílios"
+        className="w-36 h-36 md:w-48 md:h-48 rounded-full object-cover border-4 border-white"
+      />
+    </div>
+
+  </div>
+</header>
 {!booking ? (
   <section className="max-w-2xl mx-auto space-y-5">
 
